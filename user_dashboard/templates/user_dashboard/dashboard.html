@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>My Dashboard | {{request.user.username}}</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container">
+    <h1>User Dashboard</h1>
+    <div>
+        <h1>Account Balance</h1>
+        <p>This is a paragraph</p>
+    </div>
+
+    <div>
+        <h1>Total Sold</h1>
+        <p>This is a paragraph</p>
+    </div>
+
+    <div>
+        <h1>Total Withdrawal</h1>
+        <p>This is a paragraph</p>
+    </div>
+
+    <div>
+        <h1>Total Purchased</h1>
+        <p>This is a paragraph</p>
+    </div>
+
+    <div>
+        <h1>Referral Bonus</h1>
+        <p>This is a paragraph</p>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>Profile | {{request.user.username}}</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<form class="form-signin" method="POST">{% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal">Change Email/Username</h1>
+
+    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email address" autofocus value={{account_form.initial.email}}>
+    
+    <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Username" value={{account_form.initial.username}}>
+
+    {% for field in account_form %}
+        {% for error in field.errors %}
+            <p class="red_error">{{error}}</p>
+        {% endfor %}
+    {% endfor %}
+
+    {% if account_form.non_field_errors %}
+        <p class="red_error">{{account_form.non_field_errors}}</p>
+    {% endif %}
+
+    {% if success_message %}
+        <p class="green_success">{{success_message}}</p>
+    {% endif %}
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Save Changes</button>
+    <br>
+    <br>
+    <a class="me-3 py-2" href="{% url 'password_change' %}">Change Password</a>
+</form>
+
+{% endblock content %}

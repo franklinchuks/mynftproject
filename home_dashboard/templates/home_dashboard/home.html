@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+    <title>Home | {{request.user.username}}</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">This The Homepage</h1>
+    <p><a href="{% url 'blog:create' %}">Create new blog...</a></p>
+</div>
+
+{% include 'home_dashboard/snippets/all_collections_snippet.html' %}
+
+
+{% endblock content %}

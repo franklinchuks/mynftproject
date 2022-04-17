@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>Edit NFT | {{request.user.username}}</title>
+{% endblock title %}
+
+
+{% block content %}
+
+
+<div>
+    <h1>Edit NFT</h1>
+</div>
+
+<div class="container text-center">
+    <form class="create_form" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <input class="form-control" type="text" name="title" id="id_title" value="{{blog_post.title}}">
+        <br>
+        <input class="form-control" rows="10" type="text" name="body" id="id_body" value="{{blog_post.body}}">
+        <br>
+        <div class="form-group image-group" id="id_image_group">
+            <img class="img-fluid image" src="{{form.initial.image.url}}" id="id_image_display">
+            <div class="middle">
+                <div class="text">Change Image</div>
+            </div>
+        </div>
+        <br>
+        <input type="file" name="image" id="id_image_file" accept="image/*" onchange="readURL(this)">
+        <br>
+
+        {% for field in form %}
+            {% for error in field.errors %}
+            <p>{{error}}</p>
+            {% endfor %}
+        {% endfor %}
+        {% if success_message %}
+        <p class="green_success">{{success_message}}</p>
+        {% endif %}
+        {% if form.non_field_errors %}
+        <p>{{form.non_field_errors}}</p>
+        {% endif %}
+        <br>
+
+        <button class="submit-button btn btn-lg btn-primary btn-block" type="submit">Update</button>
+    </form>
+</div>
+
+
+{% endblock content %}

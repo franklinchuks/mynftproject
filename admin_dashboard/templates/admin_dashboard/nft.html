@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>All Collections | {{request.user.username}}</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container">
+    <h3>Admin Collections</h3>
+    {% if blog_posts %}
+    <ul>
+        {% for post in blog_posts %}
+        <a href="{% url 'user_dashboard:detail' post.slug %}">
+            <li class="list-group-item">{{post}}</li>
+        </a>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>You do not have any NFT collections. Create an NFT <a href="{% url 'user_dashboard:create' %}">now</a>.</p>
+    {% endif %}
+</div>
+
+<div class="container">
+    <h3>Other Users Collections</h3>
+    {% if other_blog_posts %}
+    <ul>
+        {% for post in other_blog_posts %}
+        <a href="{% url 'user_dashboard:detail' post.slug %}">
+            <li class="list-group-item">{{post}}</li>
+        </a>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No user has created any NFT collections. Create an NFT <a href="{% url 'user_dashboard:create' %}">now</a>.</p>
+    {% endif %}
+</div>
+
+
+{% endblock content %}

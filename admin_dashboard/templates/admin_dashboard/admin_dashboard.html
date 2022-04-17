@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>All Users | {{request.user.username}}</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex flex-column">
+        <h3>Registered Users</h3>
+        {% for account in accounts %}
+        <p>
+            {% if account.is_active != account.is_admin %}
+            {{account}} | {{account.username}} | {{account.date_joined}} | <a href="#" class="btn btn-secondary">Edit User Profile</a> | <a href="#" class="btn btn-secondary">Edit User Dashboard</a>
+            {% endif %}
+        </p>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

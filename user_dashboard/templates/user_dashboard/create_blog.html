@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>Create Blog | {{request.user.username}}</title>
+{% endblock title %}
+
+
+{% block content %}
+
+
+<div>
+    <h1>Create a new blog</h1>
+    <p>This is a paragraph</p>
+</div>
+
+<div class="container text-center">
+    <form class="create_form" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <input class="form-control" type="text" name="title" id="id_title" placeholder="Title" required autofocus>
+        <br>
+        <input class="form-control" rows="10" type="text" name="body" id="id_body" placeholder="Body" required >
+        <br>
+        <input type="file" name="image" id="id_image" accept="image/*" required >
+        <br>
+        <br>
+
+        <button class="submit-button btn btn-lg btn-primary btn-block" type="submit">Post</button>
+    </form>
+</div>
+
+
+{% endblock content %}

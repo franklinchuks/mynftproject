@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+{% load static %}
+<head>
+    {% comment %} Title of the page {% endcomment %}
+    {% block title %}
+    {% endblock title %}
+    {% comment %} End of Title of the page {% endcomment %}
+
+    {% comment %} Links SNIPPET {% endcomment %}
+    {% include 'snippets/links.html' %}
+    {% comment %} END of Links SNIPPET {% endcomment %}
+
+    {% comment %} Nav SNIPPET {% endcomment %}
+    {% include 'snippets/nav.html' %}
+    {% comment %} END of Nav SNIPPET {% endcomment %}
+</head>
+
+<body>
+    {% comment %} Body BLOCK {% endcomment %}
+    <div class="main">
+    {% block content %}
+    {% endblock content %}
+    </div>
+    {% comment %} End Body {% endcomment %}
+</body>
+
+<footer>
+    {% comment %} FOOTER SNIPPET {% endcomment %}
+    {% include 'snippets/footer.html' %}
+    {% comment %} FOOTER SNIPPET {% endcomment %}
+</footer>
+
+</html>

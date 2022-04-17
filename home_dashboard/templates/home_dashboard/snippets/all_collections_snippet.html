@@ -1,0 +1,18 @@
+{% load static %}
+
+<div class="container">
+    <h3>All Collections</h3>
+    {% if all_blog_posts %}
+    <ul>
+        {% for post in all_blog_posts %}
+        <a href="{% url 'user_dashboard:detail' post.slug %}">
+            <li class="list-group-item"><img class="card-img-top" src="{{post.image.url}}"> | {{post.title}} |
+                {{post.author}}</li>
+        </a>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are currently no collections available. Mint an NFT <a href="{% url 'user_dashboard:create' %}">now</a>.
+    </p>
+    {% endif %}
+</div>

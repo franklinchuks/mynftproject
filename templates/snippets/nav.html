@@ -1,0 +1,39 @@
+{% load static %}
+
+<div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+    <a href="{% url 'home' %}" class="d-flex align-items-center text-dark text-decoration-none">
+      WEBSITE LOGO
+    {% comment %} If Logged in {% endcomment %}
+        {% if request.user.is_authenticated %}
+             | Hello, {{request.user.username}}
+        {% endif %}
+    {% comment %} End of If Logged in {% endcomment %}
+    </a>
+    
+    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+{% comment %} If User {% endcomment %}
+    {% if request.user.is_authenticated == True and request.user.is_admin == False %}
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'home' %}">Home</a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'user_dashboard:dashboard' %}">My Dashboard</a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'user_dashboard:user_collections' %}">My Collections</a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'account' %}">My Profile</a>
+    <a class="me-3 py-2 btn btn-outline-danger" href="{% url 'logout' %}">Logout</a>
+{% comment %} End of If User {% endcomment %}
+{% comment %} If Admin {% endcomment %}
+    {% elif request.user.is_admin %}
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'home' %}">Home</a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'account' %}">My Profile</a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'admin_dashboard:admin_dashboard' %}">Users</a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'admin_dashboard:nft' %}">All Collections</a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'admin_dashboard:transaction' %}">Transactions</a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'admin_dashboard:withdrawal' %}">Withdrawals</a>
+    <a class="me-3 py-2 btn btn-outline-danger" href="{% url 'logout' %}">Logout</a>
+{% comment %} End of If Admin {% endcomment %}
+{% comment %} If not logged in {% endcomment %}
+    {% else %}
+    <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'login' %}">Login</a>
+    <a class="btn btn-outline-primary" href="{% url 'register' %}">Register</a>
+    {% endif %}
+{% comment %} End of If {% endcomment %}
+    </nav>
+</div>

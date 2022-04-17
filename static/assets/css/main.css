@@ -1,0 +1,71 @@
+body {
+    background-color: #f2f2f2;
+    /* background-color: skyblue; */
+    /* background-image: linear-gradient(180deg, #eee, #fff 100px, #fff); */
+}
+
+img {
+    width: 300px !important;
+    height: 200px !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.main {
+    min-height: 100vh;
+    height: 100%;
+}
+
+.card {
+    max-width: 700px;
+}
+
+.container {
+    max-width: 960px;
+}
+
+.pricing-header {
+    max-width: 700px;
+}
+
+/* Form STyliing */
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="text"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.red_error {
+    color: red !important;
+}
+
+.green_success {
+    color: green;
+}
+
+/* End Form Styling */
